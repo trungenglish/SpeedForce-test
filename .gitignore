@@ -1,0 +1,58 @@
+# Node modules
+be/node_modules/
+fe/node_modules/
+
+# Build output
+be/build/
+be/dist/
+fe/build/
+fe/dist/
+
+# Logs
+be/npm-debug.log*
+be/yarn-debug.log*
+be/yarn-error.log*
+fe/npm-debug.log*
+fe/yarn-debug.log*
+fe/yarn-error.log*
+
+# Environment files
+be/.env
+be/.env.local
+be/.env.*.local
+fe/.env
+fe/.env.local
+fe/.env.*.local
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Coverage
+be/coverage/
+fe/coverage/
+
+# Test output
+be/*.test-results.json
+fe/*.test-results.json
+
+# Misc
+*.swp
+*.swo
+
+# IDE files
+.vscode/
+.idea/
+
+# Optional: ignore package-lock and yarn lock if you don't want to track them
+# be/package-lock.json
+# be/yarn.lock
+# fe/package-lock.json
+# fe/yarn.lock
+
+# Public assets (if built)
+be/public/build/
+be/public/dist/
+
+# Existing code...
+
