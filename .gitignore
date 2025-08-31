@@ -51,8 +51,8 @@ fe/*.test-results.json
 # fe/yarn.lock
 
 # Public assets (if built)
-be/public/build/
-be/public/dist/
+be/src/public/build/
+be/src/public/dist/
 
 # Existing code...
 

@@ -1,19 +1,20 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const helmet = require('helmet');
+const indexRouter = require('./src/routes/index');
+const app = express();
 
-var indexRouter = require('./routes/index');
-
-var app = express();
-
-
+app.use(helmet());
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
+// Serve static files from upload directory
+app.use('/uploads', express.static(path.join(__dirname, 'upload')));
 
 app.use('/', indexRouter);
 
@@ -28,9 +29,13 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
+  // Return JSON error response
   res.status(err.status || 500);
-  res.render('error');
+  res.json({
+    success: false,
+    message: err.message || 'Internal Server Error',
+    error: req.app.get('env') === 'development' ? err : {}
+  });
 });
 
 module.exports = app;
